@@ -1,0 +1,14 @@
+{
+  "development": {
+    "storage": "dbaventureiros",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "storage": "dbaventureiros",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "storage": "dbaventureiros",
+    "dialect": "sqlite"
+  }
+}
