@@ -3,8 +3,7 @@ version: "3.6" ## especifica a versão do docker-compose file
 services: ## Define um serviço
   avtapp: ## nome do serviço
     build: . ## localização do dockerfile
-    command: 
-      - npm install nodemon  ## comando a executar
+    command: npm start ## comando a executar
     ports:
       - "5000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
     volumes:
