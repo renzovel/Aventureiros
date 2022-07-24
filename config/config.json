@@ -1,6 +1,6 @@
 {
   "development": {
-    "storage": "dbaventureiros",
+    "storage": "dbaventureiros.db",
     "dialect": "sqlite"
   },
   "test": {
