@@ -11,8 +11,8 @@ return (
             <p>Pronto para uma trilha?</p>
         </div>
         <div className="content2">
-            <a href="www.google.com">Entrar</a>
-            <a href="www.google.com">Criar Conta</a>
+            <a href="https://github.com/">Entrar</a>
+            <a href="https://github.com/">Criar Conta</a>
         </div>
     </div>
 );
