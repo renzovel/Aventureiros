@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('tblimages', [{
-      idimage:1,
+      id:1,
       url: 'https://aguaxterra.com.br/wp-content/uploads/2019/11/cachoeira-mais-alta-do-mundo-2-768x412.jpg',
       apagado: 0,
       idtrilha: 1,
@@ -20,7 +20,7 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      idimage:2,
+      id:2,
       url: 'https://trilhandomontanhas.com/arquivos/2018-10/salto-angel-venezuela-media.jpg',
       apagado: 0,
       idtrilha: 1,

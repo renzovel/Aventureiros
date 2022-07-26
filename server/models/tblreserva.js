@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tblreserva.init({
-    idreserva: DataTypes.INTEGER,
+    id: DataTypes.INTEGER,
     data: DataTypes.DATEONLY,
     pago: DataTypes.INTEGER,
     apagado: DataTypes.INTEGER,

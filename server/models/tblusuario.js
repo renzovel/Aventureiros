@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tblusuario.init({
-    idusuario: DataTypes.INTEGER,
+    id: DataTypes.INTEGER,
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
     senha: DataTypes.STRING,

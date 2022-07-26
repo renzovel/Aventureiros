@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tbltrilhas', {
-      idtrilha: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -48,7 +48,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'tblusuarios',
-          key: 'idusuario',
+          key: 'id',
         }
       },
       createdAt: {

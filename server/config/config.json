@@ -1,14 +1,14 @@
 {
   "development": {
-    "storage": "dbaventureiros.db",
+    "storage": "database/dbaventureiros.db",
     "dialect": "sqlite"
   },
   "test": {
-    "storage": "dbaventureiros",
+    "storage": "database/dbaventureiros.db",
     "dialect": "sqlite"
   },
   "production": {
-    "storage": "dbaventureiros",
+    "storage": "database/dbaventureiros.db",
     "dialect": "sqlite"
   }
 }

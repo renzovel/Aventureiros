@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('tbltrilhas', [{
-      idtrilha: 1,
+      id: 1,
       titulo: 'Salto Ángel ou Cataratas Ángel',
       descrip: 'O Salto Ángel ou Cataratas Ángel é o mais alto salto do mundo, com 979 metros de altura, gerada pela queda do rio Churún desde o Auyantepui, no Estado de Bolívar, sudeste da Venezuela, próximo da fronteira Brasil-Guiana. Seu nome é alusivo ao aviador estado-unidense James Crawford Angel.',
       clasifica: '1',
