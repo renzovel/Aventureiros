@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   tbltrilha.init({
     idtrilha: DataTypes.INTEGER,
     titulo: DataTypes.STRING,
-    descrip: DataTypes.STRING,
+    descrip: DataTypes.TEXT,
     clasifica: DataTypes.STRING,
     valor: DataTypes.DECIMAL,
     vagas: DataTypes.INTEGER,

@@ -12,6 +12,7 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('tblusuarios', [{
+      idusuario:1,
       nome:'RENZO VELIZ',
       email:'admin@aventureiro.com',
       senha:'$2b$10$Qh2LUcXb4fClQck7Umbr4uiSbIgpuy9JmOX370Gj3xrCD01/Uu1pO',
@@ -30,7 +31,8 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('tblusuarios', null, {});
      */
+    await queryInterface.bulkDelete('tblusuarios', null, {});
   }
 };
