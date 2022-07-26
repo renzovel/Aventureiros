@@ -1,15 +1,26 @@
 version: "3.6" ## especifica a versão do docker-compose file
 
 services: ## Define um serviço
-  avtapp: ## nome do serviço
+  server: ## nome do serviço
+    image: node:18-alpine
+    working_dir: /usr/app/server
     restart: always
-    build: . ## localização do dockerfile
     command: > 
-      sh -c "npx sequelize-cli db:migrate && 
-             npx sequelize-cli db:seed:all &&
-             npm start" ## comando a executar
+      sh -c "npm install && npx sequelize-cli db:migrate && 
+             npx sequelize-cli db:seed:all && 
+             npx nodemon index.js" ## comando a executar
     ports:
-      - "5000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
+      - "3001:3001" ## redirecionamento de porta quando chegar alguma requisição na porta 5001 chama o container na porta 3001
+    volumes:
+      - ./server:/usr/app/server ## monitoro a pasta atual . e envio as alterações
+  app: ## nome do serviço  
+    image: node:18-alpine
+    restart: always
+    working_dir: /usr/app
+    command: > 
+      sh -c "npm install && npm start" ## comando a executar
+    ports:
+      - "3000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 5000 chama o container na porta 3000
     volumes:
       - .:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
 

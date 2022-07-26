@@ -11,14 +11,20 @@ Aproveite ao máximo essas aventuras incríveis.
 
 ## Iniciar no Docker compose (recomendado)
 
-- `docker-compose`
+- `docker-compose up`
+
 
 ## Iniciar em node
 
-- `npm install`
-- `npm start`
+- 1 `npm install`
+- 2 `npm start`
 
-## Migrações com sequelize
+### Enta na pasta /server
 
-- `npx sequelize-cli db:migrate`
-- `npx sequelize-cli db:seed:all`
+- 3 `npm install`
+- 4 `npm start`
+
+### Migrações com sequelize
+
+- 5 `npx sequelize-cli db:migrate`
+- 6 `npx sequelize-cli db:seed:all`
