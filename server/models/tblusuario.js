@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tblusuario.init({
-    id: DataTypes.INTEGER,
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     nome: DataTypes.STRING,
     email: DataTypes.STRING,
     senha: DataTypes.STRING,

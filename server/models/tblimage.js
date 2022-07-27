@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tblimage.init({
-    id: DataTypes.INTEGER,
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     url: DataTypes.STRING,
     apagado: DataTypes.INTEGER,
     idtrilha: DataTypes.INTEGER

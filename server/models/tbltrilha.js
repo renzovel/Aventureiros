@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   tbltrilha.init({
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true
-  },
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     titulo: DataTypes.STRING,
     descrip: DataTypes.TEXT,
     clasifica: DataTypes.STRING,
