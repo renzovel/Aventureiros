@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     url: DataTypes.STRING,
     apagado: DataTypes.INTEGER,
-    idtrilha: DataTypes.INTEGER
+    tbltrilhaId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'tblimage',

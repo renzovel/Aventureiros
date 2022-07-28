@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     datai: DataTypes.DATE,
     dataf: DataTypes.DATE,
     apagado: DataTypes.INTEGER,
-    idusuario: DataTypes.INTEGER
+    tblusuarioId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'tbltrilha',

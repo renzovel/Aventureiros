@@ -44,7 +44,7 @@ module.exports = {
       apagado: {
         type: Sequelize.INTEGER
       },
-      idusuario: {
+      tblusuarioId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'tblusuarios',

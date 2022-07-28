@@ -25,7 +25,7 @@ module.exports = {
       datai: '2022/11/01 08:00:00',
       dataf: '2022/12/01 08:00:00',
       apagado: 0,
-      idusuario: 1,
+      tblusuarioId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

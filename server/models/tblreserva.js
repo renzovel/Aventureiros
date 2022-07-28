@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     data: DataTypes.DATEONLY,
     pago: DataTypes.INTEGER,
     apagado: DataTypes.INTEGER,
-    idusuario: DataTypes.INTEGER,
-    idtrilha: DataTypes.INTEGER
+    tblusuarioId: DataTypes.INTEGER,
+    tbltrilhaId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'tblreserva',

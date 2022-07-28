@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const {Sequelize, DataTypes} = require("sequelize");
 const TblTrilhas = require('../models/tbltrilha');
-const Connection = new Sequelize({
-    dialect: 'sqlite',
-    storage: `${__dirname}/../database/dbaventureiros.db`
-});
-
+const TblImages = require('../models/tblimage');
+const { Connection, DataTypes} = require("./config");
 const Trilhas = TblTrilhas(Connection, DataTypes);
- 
+const Images = TblImages(Connection, DataTypes);
+
+//reation left join
+Trilhas.hasMany(Images);
+
 //mostrar todos 
 router.get('/', async (req, res) => { 
-    const AllTrilhas=await Trilhas.findAll();
-    res.json({ action: 'Listing trilhas', data : AllTrilhas});
+    const AllTrilhas=await Trilhas.findAll({ include: Images });
+    res.status(200).json({ action: 'Listing trilhas', data : AllTrilhas});
 })
 
 //cadastrar 
