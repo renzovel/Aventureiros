@@ -6,6 +6,15 @@ body {
     border-radius: 5px;
     position: relative;
     top: 5px;
+    
+}
+
+.item .card__info {
+    justify-content: left;
+    position: relative;
+    top: 0px;
+    display: block;
+    
 }
 
 .container {
