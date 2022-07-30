@@ -1,69 +1,111 @@
-import React from "react";
-import "../assets/styles.css";
+import React from 'react';
 
-function MainComponent() {
-return (
-<main className="main-component">
-<div className="container">
-<div className="item">
-<a href="https://th.bing.com/th/id/R.d19c81f9896d21586ddda103939aa6ab?rik=eHpnz5pzoCZN7w&riu=http%3a%2f%2f4.bp.blogspot.com%2f-JMRxbToBEbo%2fUN1loPjkGQI%2fAAAAAAAAsGo%2fIX262KitL70%2fs1600%2fAngel-Falls-Venezuela.jpg&ehk=TUWJ1gXC%2bMkfRiGB23GoxM0XH%2fUtdK7yyl8wW6iC1Ao%3d&risl=&pid=ImgRaw&r=0">
-<img src="https://lonelyplanetimages.imgix.net/a/g/hi/t/0381f510b6548084b87b1726aa8a5a6b-salto-angel-angel-falls.jpg" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-<div className="item">
-<a href="https://th.bing.com/th/id/OIP.uwosIcXHWzwHI81HzatG7wHaFI?pid=ImgDet&rs=1">
-<img src="https://th.bing.com/th/id/OIP.uwosIcXHWzwHI81HzatG7wHaFI?pid=ImgDet&rs=1" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-<div className="item">
-<a href="https://primicia.com.ve/wp-content/uploads/2020/08/llovizna1.jpg">
-<img src="https://primicia.com.ve/wp-content/uploads/2020/08/llovizna1.jpg" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-</div>
 
-<div className="container">
-<div className="item">
-<a href="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/national-park-of-el-avila-caracas-venezuela-alejandro-ascanio.jpg">
-<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/national-park-of-el-avila-caracas-venezuela-alejandro-ascanio.jpg" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-<div className="item">
-<a href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/91146e95-1e31-4a6f-af9f-1a0794709c06/d8772un-a4eefc60-fa14-435c-aa9a-b4f94e623bef.jpg/v1/fill/w_1024,h_640,q_75,strp/pico_bolivar_merida_venezuela_by_marielisrojas-d8772un.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi85MTE0NmU5NS0xZTMxLTRhNmYtYWY5Zi0xYTA3OTQ3MDljMDYvZDg3NzJ1bi1hNGVlZmM2MC1mYTE0LTQzNWMtYWE5YS1iNGY5NGU2MjNiZWYuanBnIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTY0MCJ9XV19.zqCbG7jCTCTyLQFIwoPyHLi2fRWIBRcTNfhmb52nuro">
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/91146e95-1e31-4a6f-af9f-1a0794709c06/d8772un-a4eefc60-fa14-435c-aa9a-b4f94e623bef.jpg/v1/fill/w_1024,h_640,q_75,strp/pico_bolivar_merida_venezuela_by_marielisrojas-d8772un.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi85MTE0NmU5NS0xZTMxLTRhNmYtYWY5Zi0xYTA3OTQ3MDljMDYvZDg3NzJ1bi1hNGVlZmM2MC1mYTE0LTQzNWMtYWE5YS1iNGY5NGU2MjNiZWYuanBnIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTY0MCJ9XV19.zqCbG7jCTCTyLQFIwoPyHLi2fRWIBRcTNfhmb52nuro" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-<div className="item">
-<a href="https://th.bing.com/th/id/R.792893bf984b233aef0992778a23ee7b?rik=QrVKjc21w2%2bjfg&riu=http%3a%2f%2f4.bp.blogspot.com%2f_QCcMTHCBJ4c%2fTL_KwwWHOrI%2fAAAAAAAACis%2fiSfcCHjLE9g%2fs1600%2fDeath_ValleyUSA__A%2bMorning%2bin%2bStove%2bPipe%2bWells_Sandra.JPG&ehk=uwDwrA5UwsS7LnQtn2N91AnDf5FNTEEJHFrmXfSkUXo%3d&risl=&pid=ImgRaw&r=0">
-<img src="https://th.bing.com/th/id/R.792893bf984b233aef0992778a23ee7b?rik=QrVKjc21w2%2bjfg&riu=http%3a%2f%2f4.bp.blogspot.com%2f_QCcMTHCBJ4c%2fTL_KwwWHOrI%2fAAAAAAAACis%2fiSfcCHjLE9g%2fs1600%2fDeath_ValleyUSA__A%2bMorning%2bin%2bStove%2bPipe%2bWells_Sandra.JPG&ehk=uwDwrA5UwsS7LnQtn2N91AnDf5FNTEEJHFrmXfSkUXo%3d&risl=&pid=ImgRaw&r=0" alt="salto anguel" className="card__imagem" />
-<div className="card__info">
-<span className="card__badge">x</span>
-<span className="card__precoanterior">x</span>
-</div>
-</a>
-</div>
-</div>
-</main>
-);
+
+export default class MainComponent extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { user: null };
+    }
+    componentDidMount() {
+        //guardamos el this de la clase en otra variable para poder usarlo dentro de fetch
+        var _this = this;
+        fetch('http://localhost:3001/api/trilhas')
+            .then(response => response.json())
+            .then((user) => {
+                const trilhas = user.data.map((item, index) => {
+                    //verifica si la trilha esta o no eliminada
+                    if (item.apagado == 1) {
+                        return null;
+                    } else {
+                        //vamos almacenando las trilhas
+                        return (
+                            <div key={item.id}>
+                                <h3>Titulo : {item.titulo}</h3>
+                                <p>Descricao : {item.descrip}</p>
+                                <p>Destino : {item.destino}</p>
+                                <p>Data de inicio : {item.datai}</p>
+                                <p>Data fin : {item.dataf}</p>
+                                <p>Nivel de risgo : {item.nivelrisgo}</p>
+                                <div>{item.tblimages.length > 0 ?
+                                    item.tblimages.map((image) => {
+                                        //verifica si la imagen esta o no eliminada
+                                        if (image.apagado == 1)
+                                            return null
+                                        else
+                                            return image.apagado == 0 ?
+                                                <img key={image.id} src={image.url} alt="" width={100} height={100} style={{ marginLeft: 10 }} /> : null
+                                    }) : null}</div>
+                            </div>
+                        )
+                    }
+                });
+                _this.setState({ user: trilhas });
+            })
+    }
+    render() {
+        const user = this.state.user;
+        //mostra el contenido despues de haber sido creado
+        return user ? user : null;
+    }
+
 }
-export default MainComponent;
+
+
+
+
+
+
+/*
+{
+    "action":"Listing trilhas",
+    "data":[
+       {
+          "id":1,
+          "titulo":"Salto Ángel ou Cataratas Ángel",
+          "descrip":"O Salto Ángel ou Cataratas Ángel é o mais alto salto do mundo, com 979 metros de altura, gerada pela queda do rio Churún desde o Auyantepui, no Estado de Bolívar, sudeste da Venezuela, próximo da fronteira Brasil-Guiana. Seu nome é alusivo ao aviador estado-unidense James Crawford Angel.",
+          "clasifica":"1",
+          "valor":20.15,
+          "vagas":100,
+          "nivelrisgo":1,
+          "destino":"Parque Nacional de Canaima, Estado de Bolívar, Venezuela.",
+          "publico":1,
+          "status":1,
+          "datai":"2022/11/01 08:00:00",
+          "dataf":"2022/12/01 08:00:00",
+          "apagado":0,
+          "tblusuarioId":1,
+          "createdAt":"2022-07-30T18:57:15.653Z",
+          "updatedAt":"2022-07-30T18:57:15.653Z",
+          "tblimages":[
+             {
+                "id":1,
+                "url":"https://aguaxterra.com.br/wp-content/uploads/2019/11/cachoeira-mais-alta-do-mundo-2-768x412.jpg",
+                "apagado":0,
+                "tbltrilhaId":1,
+                "createdAt":"2022-07-30T18:57:15.660Z",
+                "updatedAt":"2022-07-30T18:57:15.660Z"
+             },
+             {
+                "id":2,
+                "url":"https://trilhandomontanhas.com/arquivos/2018-10/salto-angel-venezuela-media.jpg",
+                "apagado":0,
+                "tbltrilhaId":1,
+                "createdAt":"2022-07-30T18:57:15.660Z",
+                "updatedAt":"2022-07-30T18:57:15.660Z"
+             }
+          ]
+       }
+    ]
+ }
+*/
+
+
+
+
+
+
+
+
+

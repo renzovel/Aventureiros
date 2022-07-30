@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/styles2.css";
 
+
 function Header() {
 return (
   <div className='main'>
@@ -11,8 +12,7 @@ return (
             <p>Pronto para uma trilha?</p>
         </div>
         <div className="content2">
-            <a href="https://github.com/">Entrar</a>
-            <a href="https://github.com/">Criar Conta</a>
+            <a href="https://github.com/" target="_blank" without rel="noreferrer">Painel de Controle</a>
         </div>
     </div>
 );
