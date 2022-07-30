@@ -1,11 +1,13 @@
-:root{
-    --ancho:220px;
+:root {
+    --ancho: 220px;
 }
-.nav-header{
+
+.nav-header {
     min-height: 55px;
     background-color: #fff;
 }
-.main-menu{
+
+.main-menu {
     background-color: #343a40;
     height: 100%;
     min-width: var(--ancho);
@@ -15,21 +17,95 @@
     position: fixed;
     top: 0;
 }
-.container-main{
+
+.container-main {
     width: calc(100% - var(--ancho));
     margin-left: var(--ancho);
-    height: 100%;
-    background-color: red;
+    min-height: 500px;
+    background-color: #f4f6f9;
+    padding-top: 50px;
+}
+
+
+.container-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-table .row-table {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-direction: row;
+}
+
+.row-table {
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.row-table:hover {
+    background-color: #f1f6fb;
+}
+
+.row-table div {
+    text-align: left;
+    flex-grow: 1;
+    line-height: 65px;
+}
+
+.row-table .limit-tex {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 20px;
+}
+
+.row-table div:nth-child(1) {
+    max-width: 100px;
+    min-width: 90px;
+    flex-grow: 1;
+}
+
+.row-table div:nth-child(1)>img {
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+
+}
+
+.row-table div:last-child {
+    max-width: 100px;
+    min-width: 100px;
+    text-align: right;
+    padding-right: 10px;
+}
+.lowercase{
+    text-transform: lowercase;
+}
+.content-icon{
+    display: flex;
+}
+.icon-editar, 
+.icon-apagar{
+  max-width: none !important;
+  min-width: auto !important;
+  text-align: center !important;
+  width: 50%;
+}
+.icon-editar svg:hover, 
+.icon-apagar svg:hover{
+  transition: all 0.3s;
+  transform: scale(1.3);
+  color: #227aee;
+  cursor: pointer;
 }
 
 
 
 
-
-
-
-
-.loading{
+.loading {
     width: 60px;
     height: 60px;
     border: 3px solid green;
@@ -40,22 +116,19 @@
     border-right-color: transparent;
     border-bottom-color: green;
     border-radius: 100%;
-    animation: loading  infinite linear 0.5s;
-  }
-  
-  @media (max-width:1024px){
+    animation: loading infinite linear 0.5s;
+}
 
-  }
-  
-  @media (max-width:700px){
-    
-  }
-  
-  @keyframes loading {
+@media (max-width:1024px) {}
+
+@media (max-width:700px) {}
+
+@keyframes loading {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
