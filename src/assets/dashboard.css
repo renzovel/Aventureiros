@@ -1,0 +1,61 @@
+:root{
+    --ancho:220px;
+}
+.nav-header{
+    min-height: 55px;
+    background-color: #fff;
+}
+.main-menu{
+    background-color: #343a40;
+    height: 100%;
+    min-width: var(--ancho);
+    bottom: 0;
+    float: none;
+    left: 0;
+    position: fixed;
+    top: 0;
+}
+.container-main{
+    width: calc(100% - var(--ancho));
+    margin-left: var(--ancho);
+    height: 100%;
+    background-color: red;
+}
+
+
+
+
+
+
+
+
+.loading{
+    width: 60px;
+    height: 60px;
+    border: 3px solid green;
+    margin: auto;
+    border-bottom-style: dashed;
+    border-left-color: #d3d30f;
+    border-top-color: blue;
+    border-right-color: transparent;
+    border-bottom-color: green;
+    border-radius: 100%;
+    animation: loading  infinite linear 0.5s;
+  }
+  
+  @media (max-width:1024px){
+
+  }
+  
+  @media (max-width:700px){
+    
+  }
+  
+  @keyframes loading {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
