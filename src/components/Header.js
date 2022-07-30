@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/styles2.css";
+import {Link} from 'react-router-dom';
 
 
 function Header() {
@@ -12,7 +13,9 @@ return (
             <p>Pronto para uma trilha?</p>
         </div>
         <div className="content2">
-            <a href="https://github.com/" target="_blank" without rel="noreferrer">Painel de Controle</a>
+            <Link to="/dashboard" >
+                Painel de Controle
+            </Link>
         </div>
     </div>
 );
