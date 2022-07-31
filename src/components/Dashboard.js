@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
+import Moment from 'react-moment';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
 
@@ -29,11 +30,31 @@ function Dashboard(){
             </nav>
             <div className="container-main">
                 <div className="container-table">
+                    <div className='row-table'>
+                        <div className='text-left '>
+                            <i className="fa-solid fa-square-plus add-icon" style={{cursor:'pointer', fontSize:40, color:'green'}}></i>
+                        </div>
+                        <div className='limit-tex text-center'>
+                            Titulo
+                        </div>
+                        <div className='limit-tex text-center' >
+                            Valor
+                        </div>
+                        <div className='limit-tex text-center' >
+                            Data de Inicio
+                        </div>
+                        <div className='limit-tex text-center' >
+                            Data Fin
+                        </div>
+                        <div className='limit-tex text-center' >
+                           Opcoes
+                        </div>
+                    </div>
                     {listTrilhas.length>0?listTrilhas.map(function (data){
                     return (
                     <div key={data.id} className='row-table'>
                         <div style={{cursor:'pointer'}}>
-                            <img src={`https://ui-avatars.com/api/?background=random&name=${"data.name"}&color=FFFF`} alt={"data.name"} title={"data.name"} />
+                            <img src={data.tblimages[0].url} alt={"data.name"} title={"data.name"} />
                         </div>
                         <div className='limit-tex capitalize'  style={{maxWidth: '30%'}}>
                             {data.titulo}
@@ -42,10 +63,14 @@ function Dashboard(){
                             {data.valor} R
                         </div>
                         <div className='limit-tex' >
-                            {data.datai}
+                            <Moment format="DD/MM/YYYY">
+                                {data.datai}
+                            </Moment>
                         </div>
                         <div className='limit-tex lowercase' >
-                            {data.dataf}
+                            <Moment format="DD/MM/YYYY">
+                                {data.dataf}
+                            </Moment>
                         </div>
                         <div className='content-icon'>
                             <div className='icon-editar'>
