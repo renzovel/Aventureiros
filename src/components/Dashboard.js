@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 import Moment from 'react-moment';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
@@ -37,6 +37,14 @@ function Dashboard(){
     
     return(
     <>
+        <MyVerticallyCenteredModal
+            type={"CREATE"}
+            title={"Criar trilha"}
+            subtitle={""}
+            message={null}
+            show={null}
+            onHide={null}
+        />
         <MyVerticallyCenteredModal
             type={"READ"}
             title={readJson.titulo}
