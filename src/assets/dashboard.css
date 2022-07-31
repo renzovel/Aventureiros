@@ -1,7 +1,9 @@
 :root {
     --ancho: 220px;
 }
-
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 .nav-header {
     min-height: 55px;
     background-color: #fff;

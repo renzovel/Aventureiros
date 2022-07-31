@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
@@ -6,6 +6,15 @@ import "../assets/dashboard.css";
 
 
 function Dashboard(){
+    const [listTrilhas, setListTrilhas] = useState([]);
+    useEffect(()=>{
+        GET(URLs.getTrilhasAll)
+        .then((res)=>{
+            setListTrilhas(res.data);
+        });
+    },[]);
+
+    
     return(
         <div>
             <aside className="main-menu">
@@ -20,18 +29,23 @@ function Dashboard(){
             </nav>
             <div className="container-main">
                 <div className="container-table">
-                    <div key={"data.id"} className='row-table'>
+                    {listTrilhas.length>0?listTrilhas.map(function (data){
+                    return (
+                    <div key={data.id} className='row-table'>
                         <div style={{cursor:'pointer'}}>
                             <img src={`https://ui-avatars.com/api/?background=random&name=${"data.name"}&color=FFFF`} alt={"data.name"} title={"data.name"} />
                         </div>
                         <div className='limit-tex capitalize'  style={{maxWidth: '30%'}}>
-                            {"data.name"}
+                            {data.titulo}
                         </div>
                         <div className='limit-tex' >
-                            {"data.phone"}
+                            {data.valor} R
+                        </div>
+                        <div className='limit-tex' >
+                            {data.datai}
                         </div>
                         <div className='limit-tex lowercase' >
-                            {"data.email"}
+                            {data.dataf}
                         </div>
                         <div className='content-icon'>
                             <div className='icon-editar'>
@@ -46,7 +60,8 @@ function Dashboard(){
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </div>)
+                    }): <div className='alert-cadastra'>Cadastra uma nova aventura.</div>}
                 </div>
             </div>
         </div>
