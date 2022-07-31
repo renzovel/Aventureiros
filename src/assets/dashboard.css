@@ -2,8 +2,16 @@
     --ancho: 220px;
 }
 *{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
+
+.modal-dialog > *{
+    font-family: 'Montserrat', sans-serif !important;
+    margin: unset;
+    padding: unset;
+    align-items: unset;
+}
+
 .nav-header {
     min-height: 55px;
     background-color: #fff;
