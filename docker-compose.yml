@@ -2,7 +2,7 @@ version: "3.6" ## especifica a versão do docker-compose file
 
 services: ## Define um serviço
   server: ## nome do serviço
-    image: node:18-alpine
+    image: node:16-alpine
     user: root
     working_dir: /usr/app/server
     restart: always
@@ -16,7 +16,7 @@ services: ## Define um serviço
     volumes:
       - ./server:/usr/app/server ## monitoro a pasta atual . e envio as alterações
   app: ## nome do serviço  
-    image: node:18-alpine
+    image: node:16-alpine
     restart: always
     working_dir: /usr/app
     command: > 
