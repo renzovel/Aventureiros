@@ -13,19 +13,25 @@
 }
 
 .nav-header {
+    width: calc(100% - var(--ancho));
+    margin-left: var(--ancho);
     min-height: 55px;
     background-color: #fff;
+    padding-left: 10px;
+    transition: margin-left 1s;
 }
 
 .main-menu {
     background-color: #343a40;
     height: 100%;
-    min-width: var(--ancho);
+    width: var(--ancho);
     bottom: 0;
     float: none;
     left: 0;
     position: fixed;
     top: 0;
+    transition: width 1s;
+    overflow: hidden;
 }
 
 .container-main {
@@ -34,6 +40,8 @@
     min-height: 500px;
     background-color: #f4f6f9;
     padding-top: 50px;
+    padding-left: 10px;
+    transition: all 1s;
 }
 
 
@@ -132,9 +140,70 @@
     animation: loading infinite linear 0.5s;
 }
 
+.brand-link {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 0.8125rem 0.5rem;
+    transition: width .3s ease-in-out;
+    white-space: nowrap;
+    text-align: center;
+}
+.brand-link span{
+    font-weight: 300!important;
+    transition: margin-left .3s linear,opacity .3s ease,visibility .3s ease;
+    color: rgba(255,255,255,.8);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+.link-menu{
+    text-align: left;
+    margin-left: 5px;
+}
+.link-menu icono{
+    color: #fff !important;
+}
+.link-menu:hover{
+    background-color: #434a50;
+}
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+.elevation-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.22)!important;
+}
+.btnMenuAmburger{
+   line-height: 45px;
+}
+.menu-fechado{
+    width: 0px;
+}
+.menu-fechado-icone{
+    margin-left: 0px;
+    width: 100%;
+}
 @media (max-width:1024px) {}
 
-@media (max-width:700px) {}
+@media (max-width:700px) {
+    :root {
+        --ancho: 130px;
+    }
+    .link-menu span{
+        font-size: 14px;
+    }
+    .brand-link span{
+        font-size: 14px;
+    }
+    .main-menu{
+        overflow: hidden;
+    }
+    .container-main{
+        width: 100%;
+        margin-left: 0px;
+    }
+}
 
 @keyframes loading {
     from {

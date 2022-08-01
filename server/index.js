@@ -10,8 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/trilhas', trilhas);
-
+ 
 app.use('/api/usuarios', usuarios);
+
+app.use(express.static('uploads'));
 
 app.get("/api",(req, res)=>{
     res.send('Api-Rest Aventureiros');

@@ -22,10 +22,9 @@ async function GET(url) {
 async function POST(url, dataObject) {
     return await connect({ url: url, options:{method: 'POST', 
     headers: { 
-        'Accept':'application/json',
-        'Content-Type': 'application/json' 
+        'Accept':'*' 
     }, 
-    body:JSON.stringify(dataObject)}}); 
+    body:dataObject}}); 
 }
 
 async function DELETE(url) {

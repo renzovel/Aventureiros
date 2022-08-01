@@ -6,7 +6,7 @@ import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
 import MyVerticallyCenteredModal from './bootrap/ModalDashboard';
 import Carousel from 'react-bootstrap/Carousel';
-import { BsPlusSquareDotted } from 'react-icons/bs';
+import { BsPlusSquareDotted, BsFillHouseDoorFill, BsArrowBarLeft, BsArrowBarRight } from 'react-icons/bs';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
         yup.string()
         .required("Requerido!")
         .min(20,"Minimo 20 caracteres de descricao.")
-        .max(255, "Maximo 255 caracteres de descricao."),
+        .max(500, "Maximo 255 caracteres de descricao."),
     valor: 
         yup.number("Requerido!")
         .min(1, "Valor minimo e de 1 Reais")
@@ -81,6 +81,7 @@ function Dashboard(){
     const [modalCreate, setModalCreate] = useState(false);
     const [loadingCadastro, setLoadingCadastro] = useState(false);
     const [showAlertCadastro, setShowAlertCadastro] = useState(false);
+    const [showMenu, setShowMenu] = useState(true);
     const [readJson, setReadJson] = useState({
         titulo:'',
         tblimages:[]
@@ -92,8 +93,12 @@ function Dashboard(){
         });
     },[]);
 
+    const fechaAbreMenu = ()=>{
+        setShowMenu((showMenu)=>!showMenu);
+    }
+
     const hiddenModalRead = ()=>{
-        hiddenModalCreate(false);
+        setModalRead(false);
     }
 
     const hiddenModalCreate = ()=>{
@@ -112,17 +117,31 @@ function Dashboard(){
     //formalio de cadastro
     const cadastrarTrilhas = (data, funciones)=>{
         console.log(data, funciones);
-        setLoadingCadastro(false);
-        setShowAlertCadastro(true);
-        setTimeout(()=>{
-            setShowAlertCadastro(false);
-        }, 3000);
-        funciones.resetForm();
+        setLoadingCadastro(true);
+        let Formulario= new FormData();
+        if(data.tblimages!=null){
+            if(data.tblimages.length>0){ 
+                for(let i=0; i<data.tblimages.length; i++ ){
+                    Formulario.append("tblimages", data.tblimages[i]);
+                }
+            } 
+        }
+        Formulario.append("data", JSON.stringify(data));
+        POST(URLs.getTrilhasAll,Formulario)
+        .then((res)=>{
+            setShowAlertCadastro(true);
+            setTimeout(()=>{
+                setShowAlertCadastro(false);
+            }, 3000);
+            setLoadingCadastro(false);
+            funciones.resetForm();
+            setListTrilhas(res.data);
+        });
     }
 
     
     return(
-    <>
+    <>  
         <MyVerticallyCenteredModal
             type={"CREATE"}
             title={"Criar trilha"}
@@ -367,7 +386,7 @@ function Dashboard(){
             subtitle={""}
             message={
                 <div style={{textAlign:'justify', textIndent:5}}>
-                    <p><b>Publicado</b> : {readJson.publico==1?'Sim':'Nao'}</p>
+                    <p><b>Publicado</b> : {readJson.publico===1?'Sim':'Nao'}</p>
                     <p>{readJson.descrip}</p>
                     {readJson.tblimages.length>0?
                     <Carousel>
@@ -376,7 +395,7 @@ function Dashboard(){
                                 <Carousel.Item key={item.id}>
                                     <img
                                     className="d-block w-100"
-                                    src={item.url}
+                                    src={item.url.includes("http")?item.url:URLs.urlImages+item.url}
                                     alt={readJson.titulo}
                                     height={400}
                                     />
@@ -394,19 +413,25 @@ function Dashboard(){
             onHide={hiddenModalRead}
         />
         <div>
-            <aside className="main-menu">
-            <Link to="/" >
-                <Button className='btn-criar-contacts' variant="success" size="lg" onClick={()=>console.log("click")}>
-                    Home
-                </Button>
+            <aside className={`main-menu elevation-4 ${showMenu?"":"menu-fechado"}`}>
+            <Link to="/" className="brand-link" >
+                <span className="brand-text font-weight-light">Aventureiros</span>
+            </Link>
+            <hr style={{color:'#eee'}} />
+            <Link to="/" className="brand-link link-menu" >
+                <BsFillHouseDoorFill color="#fff" />&nbsp;<span className="brand-text font-weight-light">Home</span>
             </Link>
             </aside>
-            <nav className="nav-header">
-                dfdfd
+            <nav className={`nav-header ${showMenu?"":"menu-fechado-icone"}`}>
+                <span  className="btnMenuAmburger">
+                {showMenu?<BsArrowBarLeft size={30} id="fecha-menu" onClick={fechaAbreMenu} />:
+                    <BsArrowBarRight size={30} id="abre-menu" onClick={fechaAbreMenu} />}
+                </span>
+                
             </nav>
-            <div className="container-main">
+            <div className={`container-main ${showMenu?"":"menu-fechado-icone"}`}>
                 <div className="container-table">
-                    <div className='row-table'>
+                    <div className='row-table' >
                         <div className='text-left '>
                             <BsPlusSquareDotted onClick={actionCreate} color="green" size={30} style={{cursor:'pointer'}} />
                         </div>
@@ -426,11 +451,11 @@ function Dashboard(){
                            Opcoes
                         </div>
                     </div>
-                    {listTrilhas.length>0?listTrilhas.map(function (data){
+                    {listTrilhas!==undefined && listTrilhas.length>0?listTrilhas.map(function (data){
                     return (
                     <div key={data.id} className='row-table'>
                         <div style={{cursor:'pointer'}}>
-                            <img src={data.tblimages[0].url} alt={"data.name"} title={"data.name"} />
+                            <img src={data.tblimages[0].url.includes("http")?data.tblimages[0].url:URLs.urlImages+data.tblimages[0].url} alt={"data.name"} title={"data.name"} />
                         </div>
                         <div className='limit-tex capitalize'  style={{maxWidth: '30%'}}>
                             {data.titulo}

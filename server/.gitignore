@@ -1,2 +1,5 @@
 node_modules/
 dbaventureiros.db
+uploads/
+uploads/*
+uploads/images/
