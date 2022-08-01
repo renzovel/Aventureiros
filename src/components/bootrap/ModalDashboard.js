@@ -5,7 +5,7 @@ export default function MyVerticallyCenteredModal(props) {
         let render=null;
         switch(props.type){
             case "CREATE":
-                render = (<><Button variant="secondary" onClick={props.onHide}>Cancelar</Button></>);
+                render = (<><Button variant="secondary" onClick={props.onHide}>Fechar</Button></>);
                 break;
             case "READ":
                 render = <Button variant="secondary" onClick={props.onHide}>Fechar</Button>;

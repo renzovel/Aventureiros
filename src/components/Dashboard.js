@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
-import {Button, Form, Row, Col, InputGroup, Alert} from 'react-bootstrap';
+import {Button, Form, Row, Col, Alert} from 'react-bootstrap';
 import Moment from 'react-moment';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
@@ -79,6 +79,8 @@ function Dashboard(){
     const [listTrilhas, setListTrilhas] = useState([]);
     const [modalRead, setModalRead] = useState(false);
     const [modalCreate, setModalCreate] = useState(false);
+    const [loadingCadastro, setLoadingCadastro] = useState(false);
+    const [showAlertCadastro, setShowAlertCadastro] = useState(false);
     const [readJson, setReadJson] = useState({
         titulo:'',
         tblimages:[]
@@ -110,6 +112,12 @@ function Dashboard(){
     //formalio de cadastro
     const cadastrarTrilhas = (data, funciones)=>{
         console.log(data, funciones);
+        setLoadingCadastro(false);
+        setShowAlertCadastro(true);
+        setTimeout(()=>{
+            setShowAlertCadastro(false);
+        }, 3000);
+        funciones.resetForm();
     }
 
     
@@ -119,7 +127,14 @@ function Dashboard(){
             type={"CREATE"}
             title={"Criar trilha"}
             subtitle={""}
-            message={
+            message={loadingCadastro?
+                <div className="loading"></div>:
+                <>{showAlertCadastro?<Alert variant="success">
+                        <Alert.Heading>Show!</Alert.Heading>
+                        <p>
+                        Trilha cadastrada com sucesso.
+                        </p>
+                    </Alert>:null}
                 <Formik
                     validationSchema={schema}
                     onSubmit={cadastrarTrilhas}
@@ -341,6 +356,7 @@ function Dashboard(){
                         </Form>
                     )}
                 </Formik>
+                </>
             }
             show={modalCreate}
             onHide={hiddenModalCreate}
