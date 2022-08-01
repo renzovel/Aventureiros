@@ -1,17 +1,84 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Row, Col, InputGroup, Alert} from 'react-bootstrap';
 import Moment from 'react-moment';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
 import MyVerticallyCenteredModal from './bootrap/ModalDashboard';
 import Carousel from 'react-bootstrap/Carousel';
 import { BsPlusSquareDotted } from 'react-icons/bs';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
+const schema = yup.object().shape({
+    titulo: 
+        yup.string()
+        .required("Requerido!")
+        .min(5,"Minimo 5 caracteres no titulo.")
+        .max(100, "Maximo 100 caracteres no titulo."),
+    descrip: 
+        yup.string()
+        .required("Requerido!")
+        .min(20,"Minimo 20 caracteres de descricao.")
+        .max(255, "Maximo 255 caracteres de descricao."),
+    valor: 
+        yup.number("Requerido!")
+        .min(1, "Valor minimo e de 1 Reais")
+        .max(1000, "Valor maximo e de 1000 Reais")
+        .required("Requerido!")
+        .positive("Valor teria que ser positivo."),
+    vagas: yup.number("Requerido!")
+        .min(1, "Minimo 1 Vaga.")
+        .max(50, "Maximo 1000 Vagas.")
+        .required("Requerido!")
+        .positive("O numero de vagas tem que ser positivo.")
+        .integer("O numero de vagas tem que ser entero."),
+    nivelrisgo: yup.number("Requerido!")
+        .min(1, "Nivel errado.")
+        .max(50, "Nivel errado.")
+        .required("Requerido!"),
+    destino: yup.string()
+        .required("Requerido!")
+        .min(5,"Minimo 5 caracteres no titulo.")
+        .max(100, "Maximo 50 caracteres no titulo."),
+    publico: yup.number("Requerido!")
+        .min(0, "Error.")
+        .max(1, "Error")
+        .required("Requerido!"),
+    status: yup.number("Requerido!")
+        .min(1, "Error.")
+        .max(4, "Error")
+        .required("Requerido!"),
+    datai: yup.date().default(() => new Date()),
+    dataf: yup.date().default(() => new Date()),
+    tblimages: yup.mixed().test('fileType', 'Tipo de imagen nao permitida.', (value)=>{
+        let valid=false;
+        if(value==null){
+            return false;
+        }
+        if(value.length>0){ 
+            for(let i=0; i<value.length; i++ ){
+                if([
+                    'image/png',
+                    'image/jpg',
+                    'image/pneg',
+                    'image/jpeg',
+                ].includes(value[i].type)){
+                    valid=true;
+                }else{
+                    valid=false;
+                    break;
+                }  
+            }
+        }
+        return valid;
+    }).required()
+});
 
 function Dashboard(){
     const [listTrilhas, setListTrilhas] = useState([]);
     const [modalRead, setModalRead] = useState(false);
+    const [modalCreate, setModalCreate] = useState(false);
     const [readJson, setReadJson] = useState({
         titulo:'',
         tblimages:[]
@@ -24,7 +91,11 @@ function Dashboard(){
     },[]);
 
     const hiddenModalRead = ()=>{
-        setModalRead(false);
+        hiddenModalCreate(false);
+    }
+
+    const hiddenModalCreate = ()=>{
+        setModalCreate(false);
     }
     
     const actionRead = (data) =>{
@@ -32,7 +103,14 @@ function Dashboard(){
         setReadJson(data);
     }
 
+    const actionCreate = () =>{
+        setModalCreate(true);
+    }
 
+    //formalio de cadastro
+    const cadastrarTrilhas = (data, funciones)=>{
+        console.log(data, funciones);
+    }
 
     
     return(
@@ -41,9 +119,231 @@ function Dashboard(){
             type={"CREATE"}
             title={"Criar trilha"}
             subtitle={""}
-            message={null}
-            show={null}
-            onHide={null}
+            message={
+                <Formik
+                    validationSchema={schema}
+                    onSubmit={cadastrarTrilhas}
+                    initialValues={{
+                        titulo: '',
+                        descrip:'',
+                        valor:29.99,
+                        vagas:1,
+                        nivelrisgo:1,
+                        destino:'',
+                        publico:1,
+                        status:1,
+                        datai:'2022-01-01',
+                        dataf:'2022-01-01',
+                        tblimages:null
+                    }}>
+
+                    {({
+                        handleSubmit,
+                        handleChange,
+                        handleBlur,
+                        setFieldValue,
+                        values,
+                        touched,
+                        isValid,
+                        errors,
+                    }) => (
+                        <Form noValidate onSubmit={handleSubmit}>
+                        <Row className="mb-1">
+                            <Form.Group as={Col} md="12" controlId="titulo">
+                                <Form.Label>Titulo *</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="titulo"
+                                    placeholder="Titulo da trilha..."
+                                    value={values.titulo}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.titulo}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.titulo}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-1">
+                            <Form.Group as={Col} md="12" controlId="descrip">
+                                <Form.Label>Descricao *</Form.Label>
+                                <Form.Control
+                                    as="textarea" rows={3}
+                                    type="text"
+                                    name="descrip"
+                                    placeholder="Descricao..."
+                                    value={values.descrip}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.descrip}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.descrip}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-1">
+                            <Form.Group as={Col} md="12" controlId="destino">
+                                <Form.Label>Endereco *</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="destino"
+                                    placeholder="Endereco de destino..."
+                                    value={values.destino}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.destino}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.destino}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-2">
+                            <Form.Group as={Col} md="6" controlId="valor">
+                                <Form.Label>Valor da trilha *</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="valor"
+                                    placeholder="Data de inicio..."
+                                    value={values.valor}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.valor}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.valor}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group as={Col} md="6" controlId="vagas">
+                                <Form.Label>Numero de vagas *</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    name="vagas"
+                                    placeholder="Numero de vagas..."
+                                    value={values.vagas}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.vagas}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.vagas}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-2">
+                            <Form.Group as={Col} md="6" controlId="nivelrisgo">
+                                <Form.Label>Risgo *</Form.Label>
+                                <Form.Control
+                                    as = "select"
+                                    type="select"
+                                    name="nivelrisgo"
+                                    value={values.nivelrisgo}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.nivelrisgo}
+                                >
+                                    <option value="1">Baixo</option>
+                                    <option value="2">Medio</option>
+                                    <option value="3">Alto</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.nivelrisgo}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group as={Col} md="6" controlId="publico">
+                                <Form.Label>Publicado *</Form.Label>
+                                <Form.Control
+                                    as = "select"
+                                    type="select"
+                                    name="publico"
+                                    value={values.publico}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.publico}
+                                >
+                                    <option value="1">Sim</option>
+                                    <option value="0">Nao</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.publico}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-1">
+                            <Form.Group as={Col} md="12" controlId="status">
+                                <Form.Label>Status *</Form.Label>
+                                <Form.Control
+                                    as = "select"
+                                    type="select"
+                                    name="status"
+                                    value={values.status}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.status}
+                                >
+                                    <option value="1">Disponivel</option>
+                                    <option value="2">Iniciado</option>
+                                    <option value="3">Cancelado</option>
+                                    <option value="4">Pausado</option>
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.status}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-2">
+                            <Form.Group as={Col} md="6" controlId="datai">
+                                <Form.Label>Data de inicio.</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    name="datai"
+                                    placeholder="Data de inicio..."
+                                    value={values.datai}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.datai}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.datai}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group as={Col} md="6" controlId="dataf">
+                                <Form.Label>Data final.</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    name="dataf"
+                                    placeholder="Data final da trilha..."
+                                    value={values.dataf}
+                                    onChange={handleChange}
+                                    isInvalid={!!errors.dataf}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.dataf}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <Row className="mb-1">
+                            <Form.Group  as={Col} md="12" controlId="images">
+                                <Form.Label>Imagens *</Form.Label>
+                                <Form.Control
+                                type="file"
+                                required
+                                name="tblimages"
+                                multiple={true}
+                                isInvalid={!!errors.tblimages}
+                                onChange={(event) => {
+                                    setFieldValue("tblimages", event.currentTarget.files);
+                                }}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {errors.tblimages}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
+                        <br />
+                        <div style={{display:'block'}}>
+                            <Button type="submit" variant="primary" size="lg" style={{width:'100%'}}>Salvar</Button>
+                        </div>
+                        
+                        </Form>
+                    )}
+                </Formik>
+            }
+            show={modalCreate}
+            onHide={hiddenModalCreate}
         />
         <MyVerticallyCenteredModal
             type={"READ"}
@@ -92,7 +392,7 @@ function Dashboard(){
                 <div className="container-table">
                     <div className='row-table'>
                         <div className='text-left '>
-                            <BsPlusSquareDotted color="green" size={30} style={{cursor:'pointer'}} />
+                            <BsPlusSquareDotted onClick={actionCreate} color="green" size={30} style={{cursor:'pointer'}} />
                         </div>
                         <div className='limit-tex text-center'>
                             Titulo
