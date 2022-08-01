@@ -44,6 +44,10 @@
     transition: all 1s;
 }
 
+.btnMenuAmburger > *{
+    cursor: pointer;
+}
+
 
 .container-table {
     width: 100%;
