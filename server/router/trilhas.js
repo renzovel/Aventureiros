@@ -17,7 +17,7 @@ const upload = multer({ dest: path.resolve(`${__dirname}/../uploads/images/`)})
 
 //mostrar todos 
 router.get('/', async (req, res) => { 
-    const AllTrilhas=await Trilhas.findAll({ include: Images });
+    const AllTrilhas=await Trilhas.findAll({ include: Images ,where :{"apagado" : 0 }});
     res.status(200).json({ action: 'Listing trilhas', data : AllTrilhas});
 })
 
@@ -57,7 +57,7 @@ router.post('/', upload.array('tblimages', 20),  async (req, res, next) => {
         };
     })
     const InsertImagens = await Images.bulkCreate(imagens);
-    const AllTrilhas=await Trilhas.findAll({ include: Images });
+    const AllTrilhas=await Trilhas.findAll({ include: Images ,where :{"apagado" : 0 }});
     res.status(200).json({ action: 'Listing trilhas', data : AllTrilhas});
 })
 
@@ -73,8 +73,12 @@ router.put('/:id', async (req, res) => {
 })
 
 //apagar um cadastro
-router.delete('/:id', async (req, res) => {
-    res.json({});
-})
+router.delete('/', async (req, res) => {
+    const deleteTrilhaId = req.body.id;
+    const  trilhaDeletar = await Trilhas.findByPk(deleteTrilhaId);
+    const resposta = await trilhaDeletar.update({apagado:1});
+    const AllTrilhas=await Trilhas.findAll({ include: Images ,where :{"apagado" : 0 }});
+    res.status(200).json({ action: 'Listing trilhas', data : AllTrilhas});
+}) 
 
 module.exports = router;

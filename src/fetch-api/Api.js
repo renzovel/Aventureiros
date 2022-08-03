@@ -27,8 +27,12 @@ async function POST(url, dataObject) {
     body:dataObject}}); 
 }
 
-async function DELETE(url) {
-    return await connect({ url: url, options:{method: 'DELETE' }});
+async function DELETE(url, dataObject) {
+    return await connect({ url: url, options:{method: 'DELETE', 
+    headers: { 
+        'Accept':'application/json',
+        'Content-Type': 'application/json' 
+    }, body:JSON.stringify(dataObject) }});
 }
 
 async function PUT(url, dataObject) {

@@ -78,14 +78,17 @@ const schema = yup.object().shape({
 function Dashboard(){
     const [listTrilhas, setListTrilhas] = useState([]);
     const [modalRead, setModalRead] = useState(false);
+    const [modalDelete, setModalDelete] = useState(false);
     const [modalCreate, setModalCreate] = useState(false);
     const [loadingCadastro, setLoadingCadastro] = useState(false);
+    const [loadingDelete, setLoadingDelete] = useState(false);
     const [showAlertCadastro, setShowAlertCadastro] = useState(false);
     const [showMenu, setShowMenu] = useState(true);
     const [readJson, setReadJson] = useState({
         titulo:'',
         tblimages:[]
     });
+    const [deleteJson, setDeleteJson] = useState({id:null, titulo: null});
     useEffect(()=>{
         GET(URLs.getTrilhasAll)
         .then((res)=>{
@@ -110,13 +113,32 @@ function Dashboard(){
         setReadJson(data);
     }
 
+    const actionDelete = (data) =>{
+        setModalDelete(true);
+        setDeleteJson(data);
+    }
+
     const actionCreate = () =>{
         setModalCreate(true);
     }
 
+    const deletarTrilha=(action)=>{
+        if (action) {
+            setLoadingDelete(true);
+            DELETE(URLs.deleteTrilha,deleteJson)
+            .then((res)=>{
+                setShowAlertCadastro(false);
+                setLoadingDelete(false);
+                setModalDelete(false);
+                setListTrilhas(res.data);
+            });
+        } else {
+            setModalDelete(false);
+        }
+    }
+
     //formalio de cadastro
     const cadastrarTrilhas = (data, funciones)=>{
-        console.log(data, funciones);
         setLoadingCadastro(true);
         let Formulario= new FormData();
         if(data.tblimages!=null){
@@ -142,6 +164,14 @@ function Dashboard(){
     
     return(
     <>  
+        <MyVerticallyCenteredModal
+            type={"DELETE"}
+            title={"Apagar"}
+            subtitle={loadingDelete?null:"Você realmente deseja excluir a trilha?"}
+            message={loadingDelete?<div className="loading"></div>:<p>{`Você excluirá a trilha de titulo : "`}<strong>{deleteJson.name}</strong>{`" clica no botão `}<strong>{`"Concordo"`}</strong>{` se você realmente deseja excluí-lo.`}</p>}
+            show={modalDelete}
+            onHide={deletarTrilha}
+        />
         <MyVerticallyCenteredModal
             type={"CREATE"}
             title={"Criar trilha"}
@@ -386,7 +416,7 @@ function Dashboard(){
             subtitle={""}
             message={
                 <div style={{textAlign:'justify', textIndent:5}}>
-                    <p><b>Publicado</b> : {readJson.publico===1?'Sim':'Nao'}</p>
+                    <p><b>Publicado</b> : {readJson.publico===1?'Sim':'Nao'} &nbsp;<b>Destino</b> : {readJson.destino!=null?readJson.destino:null}</p>
                     <p>{readJson.descrip}</p>
                     {readJson.tblimages.length>0?
                     <Carousel>
@@ -480,7 +510,7 @@ function Dashboard(){
                                 </svg>
                             </div>
                             <div className='icon-apagar'>
-                                <svg onClick={(e)=>{console.log(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+                                <svg onClick={(e)=>{actionDelete(data)}} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                     <path  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                 </svg>
