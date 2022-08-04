@@ -19,7 +19,7 @@ export default class MainComponent extends React.Component {
             .then((user) => {
                 const trilhas = user.data.map((item, index) => {
                     //verifica si la trilha esta o no eliminada
-                    if (item.apagado === 1) {
+                    if (item.apagado == 1 || item.publico == 0) {
                         return null;
                     } else {
                         //vamos almacenando las trilhas
@@ -70,57 +70,6 @@ export default class MainComponent extends React.Component {
   
 
 }
-
-
-
-
-
-
-/*
-{
-    "action":"Listing trilhas",
-    "data":[
-       {
-          "id":1,
-          "titulo":"Salto Ángel ou Cataratas Ángel",
-          "descrip":"O Salto Ángel ou Cataratas Ángel é o mais alto salto do mundo, com 979 metros de altura, gerada pela queda do rio Churún desde o Auyantepui, no Estado de Bolívar, sudeste da Venezuela, próximo da fronteira Brasil-Guiana. Seu nome é alusivo ao aviador estado-unidense James Crawford Angel.",
-          "clasifica":"1",
-          "valor":20.15,
-          "vagas":100,
-          "nivelrisgo":1,
-          "destino":"Parque Nacional de Canaima, Estado de Bolívar, Venezuela.",
-          "publico":1,
-          "status":1,
-          "datai":"2022/11/01 08:00:00",
-          "dataf":"2022/12/01 08:00:00",
-          "apagado":0,
-          "tblusuarioId":1,
-          "createdAt":"2022-07-30T18:57:15.653Z",
-          "updatedAt":"2022-07-30T18:57:15.653Z",
-          "tblimages":[
-             {
-                "id":1,
-                "url":"https://aguaxterra.com.br/wp-content/uploads/2019/11/cachoeira-mais-alta-do-mundo-2-768x412.jpg",
-                "apagado":0,
-                "tbltrilhaId":1,
-                "createdAt":"2022-07-30T18:57:15.660Z",
-                "updatedAt":"2022-07-30T18:57:15.660Z"
-             },
-             {
-                "id":2,
-                "url":"https://trilhandomontanhas.com/arquivos/2018-10/salto-angel-venezuela-media.jpg",
-                "apagado":0,
-                "tbltrilhaId":1,
-                "createdAt":"2022-07-30T18:57:15.660Z",
-                "updatedAt":"2022-07-30T18:57:15.660Z"
-             }
-          ]
-       }
-    ]
- }
-*/
-
-
 
 
 
