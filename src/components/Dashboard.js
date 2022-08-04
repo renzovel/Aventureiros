@@ -285,10 +285,12 @@ function Dashboard(){
         .then((res)=>{
             setShowAlertUpdate(true);
             setTimeout(()=>{
-                setShowAlertUpdate(false);
-            }, 3000);
+                setShowAlertUpdate(async (ShowAlertUpdate)=>{
+                    await setModalUpdate(false);
+                    return false;
+                });
+            }, 4000);
             setLoadingUpdate(false);
-            funciones.resetForm();
             setListTrilhas(res.data);
         });
     }
@@ -330,7 +332,7 @@ function Dashboard(){
                         Trilha foi atualizada com sucesso.
                         </p>
                     </Alert>:null}
-                <Formik
+                {showAlertUpdate?null:<Formik
                     validationSchema={schemaUpdate}
                     onSubmit={atualizarTrilhas}
                     initialValues={{
@@ -561,7 +563,7 @@ function Dashboard(){
                         
                         </Form>
                     )}
-                </Formik>
+                </Formik>}
                 </>
             }
             show={modalUpdate}

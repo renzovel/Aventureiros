@@ -28,6 +28,7 @@ async function POST(url, dataObject) {
 }
 
 async function DELETE(url, dataObject) {
+    console.log(url);
     return await connect({ url: url, options:{method: 'DELETE', 
     headers: { 
         'Accept':'application/json',
