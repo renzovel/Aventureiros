@@ -1,4 +1,6 @@
 import React from 'react';
+import "../assets/styles.css";
+import {Link} from 'react-router-dom';
 
 
 
@@ -16,28 +18,42 @@ export default class MainComponent extends React.Component {
             .then((user) => {
                 const trilhas = user.data.map((item, index) => {
                     //verifica si la trilha esta o no eliminada
-                    if (item.apagado == 1) {
+                    if (item.apagado === 1) {
                         return null;
                     } else {
                         //vamos almacenando las trilhas
                         return (
-                            <div key={item.id}>
-                                <h3>Titulo : {item.titulo}</h3>
+                            <section className='container0'>
+                            <div className='card'>
+                            <Link to="/Emailenvio" target="_blank" without rel="noreferrer">
+                            <a href="http://localhost:3000/emailenvio" target="_blank" without rel="noreferrer">
+                                <div className='card-image car-1'>
+                                {item.tblimages.length > 0 ?
+                                    item.tblimages.map((image) => {
+                                        //verifica si la imagen esta o no eliminada
+                                        if (image.apagado === 1)
+                                            return null
+                                        else
+                                            return image.apagado === 0 ?
+                                                <img key={image.id} src={image.url} alt=""  width="328px" height="180px" /> : null
+                                    }) : null}
+                                </div>
+                                <h1>Titulo : {item.titulo}</h1>
                                 <p>Descricao : {item.descrip}</p>
                                 <p>Destino : {item.destino}</p>
                                 <p>Data de inicio : {item.datai}</p>
                                 <p>Data fin : {item.dataf}</p>
-                                <p>Nivel de risgo : {item.nivelrisgo}</p>
-                                <div>{item.tblimages.length > 0 ?
-                                    item.tblimages.map((image) => {
-                                        //verifica si la imagen esta o no eliminada
-                                        if (image.apagado == 1)
-                                            return null
-                                        else
-                                            return image.apagado == 0 ?
-                                                <img key={image.id} src={image.url} alt="" width={100} height={100} style={{ marginLeft: 10 }} /> : null
-                                    }) : null}</div>
-                            </div>
+                                
+                                </a>
+                                </Link>
+                            </div> 
+                                
+
+
+                            </section>
+
+                     
+                           
                         )
                     }
                 });
@@ -48,7 +64,9 @@ export default class MainComponent extends React.Component {
         const user = this.state.user;
         //mostra el contenido despues de haber sido creado
         return user ? user : null;
+        
     }
+  
 
 }
 

@@ -5,10 +5,10 @@ import "../assets/styles3.css";
 function Footer() {
 
 return (
-<footer class="footer">
-<div class="container">
-   <div class="row">
-       <div class="footer-col">
+<footer className="footer">
+<div className="container">
+   <div className="row">
+       <div className="footer-col">
             <h4>company</h4>
             <ul>
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">about us</a></li>
@@ -17,7 +17,7 @@ return (
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">affiliate program</a></li>
             </ul>
        </div>
-<div class="footer-col">
+<div className="footer-col">
             <h4>get help</h4>
             <ul>
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">FAQ</a></li>
@@ -26,7 +26,7 @@ return (
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">payment options</a></li>
             </ul>
        </div>
-<div class="footer-col">
+<div className="footer-col">
             <h4>online shop</h4>
             <ul>
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">backpack</a></li>
@@ -34,9 +34,9 @@ return (
                 <li><a href="https://github.com/" target="_blank" without rel="noreferrer">trail articles</a></li>
             </ul>
        </div>
-<div class="footer-col">
+<div className="footer-col">
             <h4>follow us</h4>
-            <div class="social-links">
+            <div className="social-links">
                 <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-twitter"></i></a>
                 <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-instagram"></i></a>
