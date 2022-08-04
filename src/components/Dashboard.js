@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
-import {Button, Form, Row, Col, Alert, Container} from 'react-bootstrap';
+import {Button, Form, Row, Col, Alert} from 'react-bootstrap';
 import Moment from 'react-moment';
 import { URLs, GET, DELETE, PUT, POST } from "../fetch-api/Api";
 import "../assets/dashboard.css";
@@ -151,7 +151,7 @@ function Dashboard(){
             let valid=false;
     
             //si la cantidad de imagenes a apagar es mayor o igual a las que el trajo y no hay imagenes a cargar devuelve false
-            if((updateJson.apagaimg.length==updateJson.tblimages.length)&&value==null){
+            if((updateJson.apagaimg.length===updateJson.tblimages.length)&&value===null){
                 return false;
             }
     
@@ -550,7 +550,7 @@ function Dashboard(){
                                     updateJson.tblimages.map((img)=>{
                                         return (<div key={img.id} className="containerImgDelete">
                                             <span className="deleteImage" onClick={(evt)=>actionUpdateImagen(img.id, evt)}>X</span>
-                                            <img width={50} height={50}  src={img.url.includes("http")?img.url:URLs.urlImages+img.url} />
+                                            <img width={50} height={50}  src={img.url.includes("http")?img.url:URLs.urlImages+img.url} alt="Image" title="Image" />
                                         </div>)
                                     }):null                                    
                                 }

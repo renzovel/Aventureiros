@@ -37,10 +37,10 @@ return (
 <div className="footer-col">
             <h4>follow us</h4>
             <div className="social-links">
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-twitter"></i></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-linkedin-in"></i></a>
             </div>
        </div>
    </div>
