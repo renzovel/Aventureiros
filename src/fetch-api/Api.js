@@ -38,10 +38,9 @@ async function DELETE(url, dataObject) {
 async function PUT(url, dataObject) {
     return await connect({ url: url, options:{method: 'PUT', 
     headers: { 
-        'Accept':'application/json',
-        'Content-Type': 'application/json' 
+        'Accept':'*' 
     }, 
-    body:JSON.stringify(dataObject)}});    
+    body:dataObject}});   
 }
 
 export { URLs, GET, POST, DELETE, PUT };

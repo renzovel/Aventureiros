@@ -11,8 +11,7 @@ export default function MyVerticallyCenteredModal(props) {
                 render = <Button variant="secondary" onClick={props.onHide}>Fechar</Button>;
                 break;
             case "UPDATE":
-                render = (<><Button variant="secondary" onClick={props.onHide}>Cancelar</Button>
-                    <Button  variant="primary" onClick={()=>props.onHide(true)}>Salvar</Button></>);
+                render = (<><Button variant="secondary" onClick={props.onHide}>Cancelar</Button></>);
                 break;
             case "DELETE":
                 render = (<><Button variant="secondary" onClick={()=>props.onHide(false)}>Cancelar</Button>
