@@ -882,7 +882,7 @@ function Dashboard(){
                     return (
                     <div key={data.id} className='row-table'>
                         <div style={{cursor:'pointer'}} onClick={(e)=>{actionRead(data)}}>
-                            <img src={data.tblimages[0].url.includes("http")?data.tblimages[0].url:URLs.urlImages+data.tblimages[0].url} alt={"data.name"} title={"data.name"} />
+                            <img style={data.publico===1?null:{border:'solid red 3px'}} src={data.tblimages[0].url.includes("http")?data.tblimages[0].url:URLs.urlImages+data.tblimages[0].url} alt={"data.name"} title={"data.name"} />
                         </div>
                         <div className='limit-tex capitalize'  style={{maxWidth: '30%'}}>
                             {data.titulo}
