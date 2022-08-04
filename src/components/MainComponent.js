@@ -36,7 +36,7 @@ export default class MainComponent extends React.Component {
                                             return null
                                         else
                                             return image.apagado === 0 ?
-                                                <img key={image.id} src={image.url} alt=""  width="328px" height="180px" /> : null
+                                                <img key={image.id} src={image.url.includes("http")?image.url:URLs.urlImages+image.url} alt=""  width="328px" height="180px" /> : null
                                     }) : null}
                                 </div>
                                 <h1>Titulo : {item.titulo}</h1>
