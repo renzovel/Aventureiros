@@ -35,8 +35,8 @@ router.post('/', upload.array('tblimages', 20),  async (req, res, next) => {
         destino: data.destino,   
         publico: data.publico,     
         status: data.status,     
-        datai: data.datai.replace("-","/")+" 08:00:00",     
-        dataf: data.dataf.replace("-","/")+" 08:00:00",    
+        datai: data.datai.replaceAll("-","/")+" 08:00:00",     
+        dataf: data.dataf.replaceAll("-","/")+" 08:00:00",    
         apagado: 0,     
         tblusuarioId: 1,
         createdAt: new Date(),
@@ -64,9 +64,6 @@ router.get('/:id', async (req, res) => {
 
 //atualizar um cadatro
 router.put('/', upload.array('tblimages', 20), async (req, res, next) => {
-    console.log(req.body);
-    console.log(req.files);
-
     let data = JSON.parse(req.body.data);
     const UpdateTrilha={
         titulo: data.titulo,
@@ -78,8 +75,8 @@ router.put('/', upload.array('tblimages', 20), async (req, res, next) => {
         destino: data.destino,   
         publico: data.publico,     
         status: data.status,     
-        datai: data.datai.replace("-","/")+" 08:00:00",     
-        dataf: data.dataf.replace("-","/")+" 08:00:00",    
+        datai: data.datai.replaceAll("-","/")+" 08:00:00",     
+        dataf: data.dataf.replaceAll("-","/")+" 08:00:00",    
         apagado: 0,     
         tblusuarioId: 1,
         updatedAt: new Date()
