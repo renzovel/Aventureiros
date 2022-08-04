@@ -68,7 +68,7 @@ router.put('/', upload.array('tblimages', 20), async (req, res, next) => {
     console.log(req.files);
 
     let data = JSON.parse(req.body.data);
-    const UpdateTrilha=await Trilhas.create({
+    const UpdateTrilha={
         titulo: data.titulo,
         descrip: data.descrip,
         clasifica: '1',
@@ -83,7 +83,7 @@ router.put('/', upload.array('tblimages', 20), async (req, res, next) => {
         apagado: 0,     
         tblusuarioId: 1,
         updatedAt: new Date()
-    });
+    };
 
     const  trilhaUpdate = await Trilhas.findByPk(data.id);
     const resposta = await trilhaUpdate.update(UpdateTrilha);
