@@ -839,7 +839,7 @@ function Dashboard(){
             show={modalRead}
             onHide={hiddenModalRead}
         />
-        <div>
+        <div style={{backgroundColor: '#fff'}}>
             <aside className={`main-menu elevation-4 ${showMenu?"":"menu-fechado"}`}>
             <Link to="/" className="brand-link" >
                 <span className="brand-text font-weight-light">Aventureiros</span>
