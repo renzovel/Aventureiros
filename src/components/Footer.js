@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/styles3.css";
+import { BsFacebook, BsTwitter, BsInstagram, BsLinkedin} from 'react-icons/bs';
 
 
 function Footer() {
@@ -37,10 +38,10 @@ return (
 <div className="footer-col">
             <h4>follow us</h4>
             <div className="social-links">
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-twitter"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-instagram"></i></a>
-                <a href="https://github.com/" target="_blank" without rel="noreferrer"><i className="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><BsFacebook /></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><BsTwitter /></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><BsInstagram /></a>
+                <a href="https://github.com/" target="_blank" without rel="noreferrer"><BsLinkedin /></a>
             </div>
        </div>
    </div>
