@@ -110,6 +110,22 @@ module.exports = {
       tbltrilhaId: 7,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      id:15,
+      url: 'https://www.proyectosparaconstruir.com/wp-content/uploads/2017/05/El_Pico_Bol%C3%ADvar.jpg',
+      apagado: 0,
+      tbltrilhaId: 8,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      id:16,
+      url: 'https://th.bing.com/th/id/R.8087894fd27c30d5126dfe0d247c07e8?rik=6omPd%2bbYt4Q%2f2w&pid=ImgRaw&r=0',
+      apagado: 0,
+      tbltrilhaId: 9,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 

@@ -56,7 +56,7 @@ export default class MainComponent extends React.Component {
     render() {
         const user = this.state.user;
         //mostra el contenido despues de haber sido creado
-        return user ? user : null;
+        return <div className='card-conatiner'>{user ? user : null}</div>;
         
     }
   

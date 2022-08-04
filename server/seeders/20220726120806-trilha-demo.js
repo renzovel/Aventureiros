@@ -135,6 +135,42 @@ module.exports = {
       tblusuarioId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      id: 8,
+      titulo: 'Pico Bolivar',
+      descrip: 'É um pico que constitui o ponto mais alto da Venezuela. Situado na Cordilheira de Mérida, parte da Cordilheira dos Andes',
+      clasifica: '2',
+      valor: 150.15,
+      vagas: 50,
+      nivelrisgo: 1,
+      destino: 'Estado Merida Venezuela.',
+      publico: 1,
+      status: 1,
+      datai: '2022/11/01 08:00:00',
+      dataf: '2022/12/01 08:00:00',
+      apagado: 0,
+      tblusuarioId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      id: 9,
+      titulo: 'Parque Nacional O Ávila',
+      descrip: 'O Parque Nacional de Ávila, oficialmente conhecido como Parque Nacional Waraira Repano por seu nome de nome indígena Cariban, protege parte da cordilheira da Costa Central, na região costeira do centro-norte da Venezuela. A maior elevação da área é o Pico Naiguatá, a 2.765 metros acima do nível do mar.',
+      clasifica: '1',
+      valor: 40.15,
+      vagas: 70,
+      nivelrisgo: 1,
+      destino: 'Caracas, Venezuela.',
+      publico: 1,
+      status: 1,
+      datai: '2022/11/01 08:00:00',
+      dataf: '2022/12/01 08:00:00',
+      apagado: 0,
+      tblusuarioId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 

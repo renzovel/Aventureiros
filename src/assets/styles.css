@@ -68,5 +68,11 @@ a:link, a:visited,  a:hover, a:active{
     transition: all ls ease;
 }
 
+.card-conatiner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
 
 
