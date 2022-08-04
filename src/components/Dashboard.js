@@ -862,19 +862,19 @@ function Dashboard(){
                         <div className='text-left '>
                             <BsPlusSquareDotted onClick={actionCreate} color="green" size={30} style={{cursor:'pointer'}} />
                         </div>
-                        <div className='limit-tex text-center'>
+                        <div className='limit-tex text-left'>
                             Titulo
                         </div>
-                        <div className='limit-tex text-center' >
+                        <div className='limit-tex text-left' >
                             Valor
                         </div>
-                        <div className='limit-tex text-center' >
+                        <div className='limit-tex text-left' >
                             Data de Inicio
                         </div>
-                        <div className='limit-tex text-center' >
+                        <div className='limit-tex text-left' >
                             Data Fin
                         </div>
-                        <div className='limit-tex text-center' >
+                        <div className='limit-tex text-left' >
                            Opcoes
                         </div>
                     </div>
